@@ -3,7 +3,7 @@ set PATH_TO_TEMPLATE="__Templates"
 set /p "P_NAME=enter your project name:"
 setlocal EnableDelayedExpansion
 set lastFolder=0
-for /d %%d in (*_*) do (
+for /d %%d in (???_*) do (
    set folder=%%d
    set folder=!folder:"!folder:~3!"=!
    echo !folder!
@@ -28,11 +28,6 @@ ROBOCOPY %PATH_TO_TEMPLATE% %DESTINATION_PATH% /E
         set NEW_NAME_WITHOUT_PATH=!NAME_WITHOUT_PATH:pnumber=%nextFolder%!
         rename "!CURRENT_NAME!" "!NEW_NAME_WITHOUT_PATH!"
     )
-) 
-
-
-
-pause
-
+)
 
 
