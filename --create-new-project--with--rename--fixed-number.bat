@@ -22,8 +22,6 @@ for /d %%d in (*_*) do (
     )
 
 )
-echo !lastfolder!
-pause
 
 ::calculate new folder number
 set /A nextFolder=!lastFolder!+1
@@ -42,9 +40,10 @@ set DESTINATION_PATH="%CD%\%nextFolder%_%P_NAME%"
 ::copy files from template folder
 ROBOCOPY %PATH_TO_TEMPLATE% %DESTINATION_PATH% /E
 
-
+echo %DESTINATION_PATH%
+pause
 ::recursively search through project directory and replace keywords
-@for /R "%DESTINATION_PATH%" %%I in (*.*) do (
+@for /R %DESTINATION_PATH% %%I in (*.*) do (
     set CURRENT_NAME=%%I
     set NEW_NAME=!CURRENT_NAME:pnumber=%nextFolder%!
 
