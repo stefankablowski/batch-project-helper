@@ -1,7 +1,7 @@
 ::@echo off
 setlocal EnableDelayedExpansion
 set PATH_TO_TEMPLATE="__Templates"
-set "FIXED_LENGTH=4"
+set "FIXED_LENGTH=3"
 set /p "P_NAME=enter your project name:"
 :: lowest project number to start with
 set lastFolder=0
@@ -40,8 +40,8 @@ set DESTINATION_PATH="%CD%\%nextFolder%_%P_NAME%"
 ::copy files from template folder
 ROBOCOPY %PATH_TO_TEMPLATE% %DESTINATION_PATH% /E
 
-echo %DESTINATION_PATH%
-pause
+::echo %DESTINATION_PATH%
+
 ::recursively search through project directory and replace keywords
 @for /R %DESTINATION_PATH% %%I in (*.*) do (
     set CURRENT_NAME=%%I
