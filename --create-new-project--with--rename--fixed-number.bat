@@ -57,6 +57,20 @@ pause
     )
 )
 
+@for /R %DESTINATION_PATH% %%I in (*.*) do (
+    set CURRENT_NAME=%%I
+    set NEW_NAME=!CURRENT_NAME:pname=%P_NAME%!
+
+    for %%i in ("!CURRENT_NAME!") do (
+        set NAME_WITHOUT_PATH=%%~nxi
+    )
+
+    if not "!CURRENT_NAME!"=="!NEW_NAME!" (
+        set NEW_NAME_WITHOUT_PATH=!NAME_WITHOUT_PATH:pname=%P_NAME%!
+        rename "!CURRENT_NAME!" "!NEW_NAME_WITHOUT_PATH!"
+    )
+)
+
 
 ENDLOCAL
 
